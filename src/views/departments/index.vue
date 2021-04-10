@@ -8,6 +8,7 @@
         <el-tree :data="departs" :props="defaultProps">
           <tree-tools slot-scope="{data}" :treeNode="data" @delDepts="getDepartments" @addDepts="addDepts" @editDepts="editDepts" />
         </el-tree>
+        <!-- sync 子组件去改变父组件数据的一个语法糖 -->
         <add-dept ref="addDept" :show-dialog.sync="showDialog" :treeNode="node" @addDepts="getDepartments"></add-dept>
       </el-card>
     </div>

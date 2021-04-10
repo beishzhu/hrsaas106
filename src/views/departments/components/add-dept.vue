@@ -140,8 +140,8 @@ export default {
         code: '',
         manager: '',
         introduce: ''
-      },
-        this.$emit('update:showDialog', false) // 关闭弹层
+      }
+      this.$emit('update:showDialog', false) // 关闭弹层
       this.$refs.deptForm.resetFields() // 重置校验
     }
   }

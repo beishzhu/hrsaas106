@@ -11,7 +11,7 @@
       </el-col>
       <el-col>
         <!-- 右边 -->
-        <el-row type="flex" juntify="end">
+        <el-row type="flex" justify="end">
           <slot name="after" />
         </el-row>
       </el-col>

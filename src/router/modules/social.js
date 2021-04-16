@@ -1,15 +1,50 @@
+
 import Layout from '@/layout'
+
 export default {
-  path: '/social', // 路径
-  name: 'social',
-  component: Layout, // 组件
-  // 配置二级路的路由表
-  children: [{
-    path: '', // 这里当二级路由的path 什么都不写的时候 标识该路由为当前二级路由的默认路由
-    component: () => import('@/views/social'),
-    meta: {
-      title: '社保', // meta属性里面的属性 随意定义 但这里为什么要用title呢 因为左侧导航会读取我们的理由里的meta里面的title座位显示菜单名称
-      icon: 'table'
+  path: '/social_securitys',
+  component: Layout,
+  name: 'social_securitys',
+  children: [
+    {
+      path: '',
+      component: () => import('@/views/social'),
+      name: 'social_securitys',
+      meta: {
+        title: '社保',
+        icon: 'table'
+
+      }
+    },
+    // 报表
+    {
+      path: 'detail/:id',
+      hidden: true,
+      component: () => import('@/views/social/detail'),
+      name: 'socialDetail',
+      meta: {
+        title: '社保'
+      }
+    },
+    // 历史归档
+    {
+      path: 'historicalArchiving',
+      hidden: true,
+      component: () => import('@/views/social/historical'),
+      name: 'socialHistorical',
+      meta: {
+        title: '历史归档'
+      }
+    },
+    // 月报表
+    {
+      path: 'monthStatement',
+      component: () => import('@/views/social/month'),
+      name: 'socialMonthStatement',
+      hidden: true,
+      meta: {
+        title: '当月报表'
+      }
     }
-  }]
+  ]
 }

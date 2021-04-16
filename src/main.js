@@ -15,9 +15,15 @@ import Component from '@/components'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-
+import checkPermission from '@/mixin/checkPernussion'
 import * as directives from '@/directives'
 import * as filters from '@/filters'
+import i18n from '@/lang'
+
+// import { createI18n } from 'vue-i18n/dist/vue-i18n.esm-bundler.js';
+// import {
+//   createI18n
+// } from 'vue-i18n/dist/vue-i18n.esm-bundler.js';
 // 注册自定义指令
 // 遍历所有的导出的指令对象 完成自定义全局注册
 Object.keys(directives).forEach(key => {
@@ -33,19 +39,22 @@ Object.keys(filters).forEach(key => {
 
 // 注册自己的插件
 Vue.use(Component)
-
+// 全局混入
+Vue.mixin(checkPermission)
 // set ElementUI lang to EN
-Vue.use(ElementUI, {
-  locale
-})
+// Vue.use(ElementUI, {
+//   locale
+// })
 // 如果想要中文版 element-ui，按如下方式声明
-// Vue.use(ElementUI)
+Vue.use(ElementUI, {
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 Vue.config.productionTip = false
-
 new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   render: h => h(App)
 })

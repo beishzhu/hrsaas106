@@ -1,15 +1,72 @@
 import Layout from '@/layout'
+
 export default {
-  path: '/approvals', // 路径
+  path: '/approvals',
+  component: Layout,
   name: 'approvals',
-  component: Layout, // 组件
-  // 配置二级路的路由表
-  children: [{
-    path: '', // 这里当二级路由的path 什么都不写的时候 标识该路由为当前二级路由的默认路由
-    component: () => import('@/views/approvals'),
-    meta: {
-      title: '审批', // meta属性里面的属性 随意定义 但这里为什么要用title呢 因为左侧导航会读取我们的理由里的meta里面的title座位显示菜单名称
-      icon: 'tree-table'
+  children: [
+    {
+      path: '',
+      component: () => import('@/views/approvals'),
+      name: 'approvals',
+      meta: {
+        title: '审批',
+        icon: 'tree-table'
+      }
+    },
+    {
+      path: 'salaryApproval/:id',
+      component: () => import('@/views/approvals/salary'),
+      name: 'salaryApproval',
+      hidden: true,
+      meta: {
+        title: '工资审核',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'enterApproval/:id',
+      component: () => import('@/views/approvals/enter'),
+      name: 'enterApproval',
+      hidden: true,
+      meta: {
+        title: '入职审核',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'leaveApproval/:id',
+      component: () => import('@/views/approvals/leave'),
+      name: 'leaveApproval',
+      hidden: true,
+      meta: {
+        title: '申请请假',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'quitApproval/:id',
+      component: () => import('@/views/approvals/quit'),
+      name: 'quitApproval',
+      hidden: true,
+      meta: {
+        title: '申请离职',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'overtimeApproval/:id',
+      component: () => import('@/views/approvals/overtime'),
+      name: 'overtimeApproval',
+      hidden: true,
+      meta: {
+        title: '加班申请',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'securitySetting',
+      component: () => import('@/views/approvals/security'),
+      name: 'securitySetting',
+      hidden: true,
+      meta: {
+        title: '设置',
+        icon: 'approval', noCache: true }
     }
-  }]
+  ]
 }
